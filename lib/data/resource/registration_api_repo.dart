@@ -6,6 +6,7 @@ import 'package:random_string/random_string.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 
+import '../../environment_config.dart';
 import '../registration_repo.dart';
 import '../model/credential.dart';
 import '../model/plan.dart';
@@ -14,18 +15,24 @@ import '../model/invoice.dart';
 import '../model/registration.dart';
 import '../database_helper.dart';
 
-final bool _kReleaseMode = const bool.fromEnvironment("dart.vm.product");
-
 class ApiRegistrationRepo implements RegistrationRepo {
   final RemoteConfig remoteConfig;
 
   ApiRegistrationRepo(this.remoteConfig) : super();
 
   String _getBaseURL() {
-    if(_kReleaseMode) {
+    if(EnvironmentConfig.BASE_HOST.isEmpty) {
+      print("BASE_URL is " + this.remoteConfig.getString('baseUrl'));
       return this.remoteConfig.getString('baseUrl');
     } else {
-      return "http://localhost:3000";
+      String baseUrl;
+      if(EnvironmentConfig.BASE_PORT.isEmpty) {
+        baseUrl = EnvironmentConfig.BASE_PROTOCOL + "://" + EnvironmentConfig.BASE_HOST;
+      } else {
+        baseUrl = EnvironmentConfig.BASE_PROTOCOL + "://" + EnvironmentConfig.BASE_HOST + ":" + EnvironmentConfig.BASE_PORT;
+      }
+      print("BASE_URL is $baseUrl");
+      return baseUrl;
     }
   }
 
@@ -33,6 +40,7 @@ class ApiRegistrationRepo implements RegistrationRepo {
   Future<Registration> submitRegistration(email) async {
     final String baseUrl = _getBaseURL();
     final registrationUrl = '$baseUrl/users.json';
+    print(baseUrl);
     http.Response registrationResponse;
     try {
       final password = randomString(15);
@@ -334,7 +342,8 @@ class ApiRegistrationRepo implements RegistrationRepo {
         id: plan['id'],
         name: plan['name'],
         description: plan['description'],
-        price: plan['price_cents']);
+        price: plan['price_cents'],
+	icon: plan['product']['logo']);
   }
 
   @override
@@ -368,7 +377,8 @@ class ApiRegistrationRepo implements RegistrationRepo {
         price_cents: i['plan']['price_cents'],
         discount_name: i['discount'] != null ? i['discount']['name'] : "",
         rebate_cents: i['rebate_cents'],
-        total_cents: i['total_cents']);
+        total_cents: i['total_cents'],
+	icon: i['icon']);
 
     print(invoice);
 
@@ -413,14 +423,15 @@ class ApiRegistrationRepo implements RegistrationRepo {
         discount_name: invoice.discount_name,
         rebate_cents: invoice.rebate_cents,
         total_cents: invoice.total_cents,
-        description: r['description']);
+        description: r['description'],
+	icon: r['icon']);
 
     SharedPreferences prefs = await SharedPreferences.getInstance();
     int numOfCredentials = prefs.getInt('numOfCredentials');
 
-    Note note = Note(receipt.plan_name,"${receipt.email} (exp:${receipt.expires})");
+    Credential cred = Credential(receipt.plan_name,"${receipt.email} (exp:${receipt.expires})",receipt.icon);
     DatabaseHelper db = new DatabaseHelper();
-    await db.saveNote(note);
+    await db.saveCred(cred);
 
     prefs.setInt('numOfCredentials', numOfCredentials+1);
 

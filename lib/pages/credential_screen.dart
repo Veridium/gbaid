@@ -2,32 +2,34 @@ import 'package:flutter/material.dart';
 import '../data/model/credential.dart';
 import '../data/database_helper.dart';
  
-class NoteScreen extends StatefulWidget {
-  final Note note;
-  NoteScreen(this.note);
+class CredentialScreen extends StatefulWidget {
+  final Credential cred;
+  CredentialScreen(this.cred);
  
   @override
-  State<StatefulWidget> createState() => new _NoteScreenState();
+  State<StatefulWidget> createState() => new _CredentialScreenState();
 }
  
-class _NoteScreenState extends State<NoteScreen> {
+class _CredentialScreenState extends State<CredentialScreen> {
   DatabaseHelper db = new DatabaseHelper();
  
   TextEditingController _titleController;
   TextEditingController _descriptionController;
+  TextEditingController _iconController;
  
   @override
   void initState() {
     super.initState();
  
-    _titleController = new TextEditingController(text: widget.note.title);
-    _descriptionController = new TextEditingController(text: widget.note.description);
+    _titleController = new TextEditingController(text: widget.cred.title);
+    _descriptionController = new TextEditingController(text: widget.cred.description);
+    _iconController = new TextEditingController(text: widget.cred.icon);
   }
  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Note')),
+      appBar: AppBar(title: Text('Credential')),
       body: Container(
         margin: EdgeInsets.all(15.0),
         alignment: Alignment.center,
@@ -43,19 +45,25 @@ class _NoteScreenState extends State<NoteScreen> {
               decoration: InputDecoration(labelText: 'Description'),
             ),
             Padding(padding: new EdgeInsets.all(5.0)),
+            TextField(
+              controller: _iconController,
+              decoration: InputDecoration(labelText: 'Icon'),
+            ),
+            Padding(padding: new EdgeInsets.all(5.0)),
             RaisedButton(
-              child: (widget.note.id != null) ? Text('Update') : Text('Add'),
+              child: (widget.cred.id != null) ? Text('Update') : Text('Add'),
               onPressed: () {
-                if (widget.note.id != null) {
-                  db.updateNote(Note.fromMap({
-                    'id': widget.note.id,
+                if (widget.cred.id != null) {
+                  db.updateCred(Credential.fromMap({
+                    'id': widget.cred.id,
                     'title': _titleController.text,
-                    'description': _descriptionController.text
+                    'description': _descriptionController.text,
+                    'icon': _iconController.text
                   })).then((_) {
                     Navigator.pop(context, 'update');
                   });
                 }else {
-                  db.saveNote(Note(_titleController.text, _descriptionController.text)).then((_) {
+                  db.saveCred(Credential(_titleController.text, _descriptionController.text, _iconController.text)).then((_) {
                     Navigator.pop(context, 'save');
                   });
                 }

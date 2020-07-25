@@ -10,6 +10,7 @@ class Receipt extends Equatable {
   final int rebate_cents;
   final int total_cents;
   final String description;
+  final String icon;
 
   Receipt({
     @required this.email,
@@ -20,6 +21,7 @@ class Receipt extends Equatable {
     this.rebate_cents,
     @required this.total_cents,
     this.description,
+    this.icon,
   });
 
   @override
@@ -32,5 +34,6 @@ class Receipt extends Equatable {
     rebate_cents,
     total_cents,
     description,
+    icon,
   ];
 }

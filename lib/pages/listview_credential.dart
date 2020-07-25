@@ -10,23 +10,23 @@ import '../data/model/credential.dart';
 import '../data/database_helper.dart';
 import 'credential_screen.dart';
 
-class ListViewNote extends StatefulWidget {
+class ListViewCred extends StatefulWidget {
   @override
-  _ListViewNoteState createState() => new _ListViewNoteState();
+  _ListViewCredState createState() => new _ListViewCredState();
 }
 
-class _ListViewNoteState extends State<ListViewNote> {
-  List<Note> items = new List();
+class _ListViewCredState extends State<ListViewCred> {
+  List<Credential> items = new List();
   DatabaseHelper db = new DatabaseHelper();
 
   @override
   void initState() {
     super.initState();
 
-    db.getAllNotes().then((notes) {
+    db.getAllCreds().then((credentials) {
       setState(() {
-        notes.forEach((note) {
-          items.add(Note.fromMap(note));
+        credentials.forEach((cred) {
+          items.add(Credential.fromMap(cred));
         });
       });
     });
@@ -65,7 +65,7 @@ class _ListViewNoteState extends State<ListViewNote> {
                   leading: Column(
                     children: <Widget>[
                       Padding(padding: EdgeInsets.all(10.0)),
-                      Image.asset("images/sovrin-ico.png", height: 30),
+                      Image.network(items[position].icon, height: 30),
                     ],
                   ),
                   onTap: () => _navigateToCredential(context, items[position]),
@@ -83,20 +83,20 @@ class _ListViewNoteState extends State<ListViewNote> {
     registrationBloc.add(ShowPlans());
   }
 
-  void _deleteNote(BuildContext context, Note note, int position) async {
-    db.deleteNote(note.id).then((notes) {
+  void _deleteCred(BuildContext context, Credential cred, int position) async {
+    db.deleteCred(cred.id).then((creds) {
       setState(() {
         items.removeAt(position);
       });
     });
   }
 
-  void _navigateToCredential(BuildContext context, Note note) async {
+  void _navigateToCredential(BuildContext context, Credential cred) async {
     String barcodeScanRes = await FlutterBarcodeScanner.scanBarcode("#ff6666", "Cancel", false, ScanMode.DEFAULT);
     http.Response pingResponse;
     RegExp re = new RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
-    Match firstMatch = re.firstMatch(note.description);
-    String email = note.description.substring(firstMatch.start, firstMatch.end);
+    Match firstMatch = re.firstMatch(cred.description);
+    String email = cred.description.substring(firstMatch.start, firstMatch.end);
     try {
       pingResponse = await http.post(Uri.encodeFull(barcodeScanRes),
           body: json.encode({
@@ -109,18 +109,18 @@ class _ListViewNoteState extends State<ListViewNote> {
     }
   }
 
-  void _createNewNote(BuildContext context) async {
+  void _createNewCred(BuildContext context) async {
     String result = await Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => NoteScreen(Note('', ''))),
+      MaterialPageRoute(builder: (context) => CredentialScreen(Credential('', '', ''))),
     );
 
     if (result == 'save') {
-      db.getAllNotes().then((notes) {
+      db.getAllCreds().then((creds) {
         setState(() {
           items.clear();
-          notes.forEach((note) {
-            items.add(Note.fromMap(note));
+          creds.forEach((cred) {
+            items.add(Credential.fromMap(cred));
           });
         });
       });

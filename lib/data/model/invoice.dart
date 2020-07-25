@@ -8,6 +8,7 @@ class Invoice extends Equatable {
   final String discount_name;
   final int rebate_cents;
   final int total_cents;
+  final String icon;
 
   Invoice({
     @required this.invoice_id,
@@ -16,6 +17,7 @@ class Invoice extends Equatable {
     this.discount_name,
     this.rebate_cents,
     @required this.total_cents,
+    @required this.icon,
   });
 
   @override
@@ -26,5 +28,6 @@ class Invoice extends Equatable {
     discount_name,
     rebate_cents,
     total_cents,
+    icon,
   ];
 }

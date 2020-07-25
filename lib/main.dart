@@ -50,5 +50,6 @@ Future<RemoteConfig> setupRemoteConfig() async {
   });
   await remoteConfig.fetch(expiration: const Duration(seconds: 0));
   await remoteConfig.activateFetched();
+  print("remote config fetched");
   return remoteConfig;
 }

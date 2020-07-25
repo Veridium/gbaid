@@ -9,10 +9,11 @@ class DatabaseHelper {
  
   factory DatabaseHelper() => _instance;
  
-  final String tableNote = 'noteTable';
+  final String tableCreds = 'credentialTable';
   final String columnId = 'id';
   final String columnTitle = 'title';
   final String columnDescription = 'description';
+  final String columnIcon = 'icon';
  
   static Database _db;
  
@@ -29,7 +30,7 @@ class DatabaseHelper {
  
   initDb() async {
     String databasesPath = await getDatabasesPath();
-    String path = join(databasesPath, 'notes.db');
+    String path = join(databasesPath, 'credentials.db');
  
 //    await deleteDatabase(path); // just for testing
  
@@ -39,57 +40,57 @@ class DatabaseHelper {
  
   void _onCreate(Database db, int newVersion) async {
     await db.execute(
-        'CREATE TABLE $tableNote($columnId INTEGER PRIMARY KEY, $columnTitle TEXT, $columnDescription TEXT)');
+        'CREATE TABLE $tableCreds($columnId INTEGER PRIMARY KEY, $columnTitle TEXT, $columnDescription TEXT, $columnIcon TEXT)');
   }
  
-  Future<int> saveNote(Note note) async {
+  Future<int> saveCred(Credential cred) async {
     var dbClient = await db;
-    var result = await dbClient.insert(tableNote, note.toMap());
+    var result = await dbClient.insert(tableCreds, cred.toMap());
 //    var result = await dbClient.rawInsert(
-//        'INSERT INTO $tableNote ($columnTitle, $columnDescription) VALUES (\'${note.title}\', \'${note.description}\')');
+//        'INSERT INTO $tableCreds ($columnTitle, $columnDescription, $columnIcon) VALUES (\'${cred.title}\', \'${cred.description}\')');
  
     return result;
   }
  
-  Future<List> getAllNotes() async {
+  Future<List> getAllCreds() async {
     var dbClient = await db;
-    var result = await dbClient.query(tableNote, columns: [columnId, columnTitle, columnDescription]);
-//    var result = await dbClient.rawQuery('SELECT * FROM $tableNote');
+    var result = await dbClient.query(tableCreds, columns: [columnId, columnTitle, columnDescription, columnIcon]);
+//    var result = await dbClient.rawQuery('SELECT * FROM $tableCreds');
  
     return result.toList();
   }
  
   Future<int> getCount() async {
     var dbClient = await db;
-    return Sqflite.firstIntValue(await dbClient.rawQuery('SELECT COUNT(*) FROM $tableNote'));
+    return Sqflite.firstIntValue(await dbClient.rawQuery('SELECT COUNT(*) FROM $tableCreds'));
   }
  
-  Future<Note> getNote(int id) async {
+  Future<Credential> getCred(int id) async {
     var dbClient = await db;
-    List<Map> result = await dbClient.query(tableNote,
-        columns: [columnId, columnTitle, columnDescription],
+    List<Map> result = await dbClient.query(tableCreds,
+        columns: [columnId, columnTitle, columnDescription, columnIcon],
         where: '$columnId = ?',
         whereArgs: [id]);
-//    var result = await dbClient.rawQuery('SELECT * FROM $tableNote WHERE $columnId = $id');
+//    var result = await dbClient.rawQuery('SELECT * FROM $tableCreds WHERE $columnId = $id');
  
     if (result.length > 0) {
-      return new Note.fromMap(result.first);
+      return new Credential.fromMap(result.first);
     }
  
     return null;
   }
  
-  Future<int> deleteNote(int id) async {
+  Future<int> deleteCred(int id) async {
     var dbClient = await db;
-    return await dbClient.delete(tableNote, where: '$columnId = ?', whereArgs: [id]);
-//    return await dbClient.rawDelete('DELETE FROM $tableNote WHERE $columnId = $id');
+    return await dbClient.delete(tableCreds, where: '$columnId = ?', whereArgs: [id]);
+//    return await dbClient.rawDelete('DELETE FROM $tableCreds WHERE $columnId = $id');
   }
  
-  Future<int> updateNote(Note note) async {
+  Future<int> updateCred(Credential cred) async {
     var dbClient = await db;
-    return await dbClient.update(tableNote, note.toMap(), where: "$columnId = ?", whereArgs: [note.id]);
+    return await dbClient.update(tableCreds, cred.toMap(), where: "$columnId = ?", whereArgs: [cred.id]);
 //    return await dbClient.rawUpdate(
-//        'UPDATE $tableNote SET $columnTitle = \'${note.title}\', $columnDescription = \'${note.description}\' WHERE $columnId = ${note.id}');
+//        'UPDATE $tableCreds SET $columnTitle = \'${cred.title}\', $columnDescription = \'${cred.description}\', $columnIcon = \'${cred.icon}\' WHERE $columnId = ${cred.id}');
   }
  
   Future close() async {

@@ -168,7 +168,7 @@ class RegistrationSignupPageState extends State<RegistrationSignupPage> {
   }
 
   Widget _buildWallet(BuildContext context, Registration registration) {
-    return ListViewNote();
+    return ListViewCred();
   }
 
   Widget _buildShowReceipt(BuildContext context, Receipt receipt) {
@@ -252,7 +252,7 @@ class RegistrationSignupPageState extends State<RegistrationSignupPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Image.asset('images/sovrin-logo-large.png', height: 75),
+            Image.network(invoice.icon, height: 75),
             SizedBox(height: 20),
             Text(
               invoice.plan_name,
@@ -330,7 +330,7 @@ class RegistrationSignupPageState extends State<RegistrationSignupPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Image.asset('images/sovrin-logo-large.png', height: 75),
+            Image.network(plan.icon, height: 75),
             SizedBox(height: 20),
             Text(
               plan.name,
