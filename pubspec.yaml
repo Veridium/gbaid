@@ -15,7 +15,7 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^0.1.2
   square_in_app_payments: ^1.1.0
-  firebase_remote_config: ^0.3.0
+  firebase_remote_config: ^0.6.0
   random_string: ^1.1.0
   package_info: ^0.4.0+10
   http: ^0.12.0

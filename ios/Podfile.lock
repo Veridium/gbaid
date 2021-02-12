@@ -1,76 +1,75 @@
 PODS:
-  - Firebase/CoreOnly (6.12.0):
-    - FirebaseCore (= 6.3.3)
-  - Firebase/RemoteConfig (6.12.0):
+  - Firebase/CoreOnly (7.3.0):
+    - FirebaseCore (= 7.3.0)
+  - Firebase/RemoteConfig (7.3.0):
     - Firebase/CoreOnly
-    - FirebaseRemoteConfig (~> 4.4.4)
-  - firebase_remote_config (0.0.1):
-    - Firebase/RemoteConfig
+    - FirebaseRemoteConfig (~> 7.3.0)
+  - firebase_core (0.7.0):
+    - Firebase/CoreOnly (= 7.3.0)
     - Flutter
-  - FirebaseABTesting (3.1.2):
-    - FirebaseAnalyticsInterop (~> 1.3)
-    - FirebaseCore (~> 6.1)
-    - Protobuf (>= 3.9.2, ~> 3.9)
-  - FirebaseAnalyticsInterop (1.4.0)
-  - FirebaseCore (6.3.3):
-    - FirebaseCoreDiagnostics (~> 1.0)
-    - FirebaseCoreDiagnosticsInterop (~> 1.0)
-    - GoogleUtilities/Environment (~> 6.2)
-    - GoogleUtilities/Logger (~> 6.2)
-  - FirebaseCoreDiagnostics (1.1.1):
-    - FirebaseCoreDiagnosticsInterop (~> 1.0)
-    - GoogleDataTransportCCTSupport (~> 1.0)
-    - GoogleUtilities/Environment (~> 6.2)
-    - GoogleUtilities/Logger (~> 6.2)
-    - nanopb (~> 0.3.901)
-  - FirebaseCoreDiagnosticsInterop (1.1.0)
-  - FirebaseInstanceID (4.2.7):
-    - FirebaseCore (~> 6.0)
-    - GoogleUtilities/Environment (~> 6.0)
-    - GoogleUtilities/UserDefaults (~> 6.0)
-  - FirebaseRemoteConfig (4.4.5):
-    - FirebaseABTesting (~> 3.1)
-    - FirebaseAnalyticsInterop (~> 1.4)
-    - FirebaseCore (~> 6.2)
-    - FirebaseInstanceID (~> 4.2)
-    - GoogleUtilities/Environment (~> 6.2)
-    - "GoogleUtilities/NSData+zlib (~> 6.2)"
-    - Protobuf (>= 3.9.2, ~> 3.9)
+  - firebase_remote_config (0.6.0):
+    - Firebase/RemoteConfig (= 7.3.0)
+    - firebase_core
+    - Flutter
+  - FirebaseABTesting (7.6.0):
+    - FirebaseCore (~> 7.0)
+  - FirebaseCore (7.3.0):
+    - FirebaseCoreDiagnostics (~> 7.0)
+    - GoogleUtilities/Environment (~> 7.0)
+    - GoogleUtilities/Logger (~> 7.0)
+  - FirebaseCoreDiagnostics (7.6.0):
+    - GoogleDataTransport (~> 8.0)
+    - GoogleUtilities/Environment (~> 7.0)
+    - GoogleUtilities/Logger (~> 7.0)
+    - nanopb (~> 2.30907.0)
+  - FirebaseInstallations (7.6.0):
+    - FirebaseCore (~> 7.0)
+    - GoogleUtilities/Environment (~> 7.0)
+    - GoogleUtilities/UserDefaults (~> 7.0)
+    - PromisesObjC (~> 1.2)
+  - FirebaseRemoteConfig (7.3.0):
+    - FirebaseABTesting (~> 7.0)
+    - FirebaseCore (~> 7.0)
+    - FirebaseInstallations (~> 7.0)
+    - GoogleUtilities/Environment (~> 7.0)
+    - "GoogleUtilities/NSData+zlib (~> 7.0)"
   - Flutter (1.0.0)
   - flutter_barcode_scanner (0.1.7):
     - Flutter
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
-  - GoogleDataTransport (3.0.1)
-  - GoogleDataTransportCCTSupport (1.2.1):
-    - GoogleDataTransport (~> 3.0)
-    - nanopb (~> 0.3.901)
-  - GoogleUtilities/Environment (6.3.1)
-  - GoogleUtilities/Logger (6.3.1):
+  - GoogleDataTransport (8.2.0):
+    - nanopb (~> 2.30907.0)
+  - GoogleUtilities/Environment (7.2.2):
+    - PromisesObjC (~> 1.2)
+  - GoogleUtilities/Logger (7.2.2):
     - GoogleUtilities/Environment
-  - "GoogleUtilities/NSData+zlib (6.3.1)"
-  - GoogleUtilities/UserDefaults (6.3.1):
+  - "GoogleUtilities/NSData+zlib (7.2.2)"
+  - GoogleUtilities/UserDefaults (7.2.2):
     - GoogleUtilities/Logger
-  - nanopb (0.3.9011):
-    - nanopb/decode (= 0.3.9011)
-    - nanopb/encode (= 0.3.9011)
-  - nanopb/decode (0.3.9011)
-  - nanopb/encode (0.3.9011)
+  - nanopb (2.30907.0):
+    - nanopb/decode (= 2.30907.0)
+    - nanopb/encode (= 2.30907.0)
+  - nanopb/decode (2.30907.0)
+  - nanopb/encode (2.30907.0)
   - package_info (0.0.1):
     - Flutter
-  - Protobuf (3.10.0)
+  - PromisesObjC (1.2.12)
   - shared_preferences (0.0.1):
     - Flutter
-  - sqflite (0.0.1):
+  - sqflite (0.0.2):
     - Flutter
-    - FMDB (~> 2.7.2)
-  - square_in_app_payments (1.2.0):
+    - FMDB (>= 2.7.5)
+  - square_in_app_payments (1.3.0):
     - Flutter
-    - SquareInAppPaymentsSDK (= 1.2.0)
-  - SquareInAppPaymentsSDK (1.2.0)
+    - SquareBuyerVerificationSDK (= 1.3.0)
+    - SquareInAppPaymentsSDK (= 1.4.0)
+  - SquareBuyerVerificationSDK (1.3.0)
+  - SquareInAppPaymentsSDK (1.4.0)
 
 DEPENDENCIES:
+  - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - firebase_remote_config (from `.symlinks/plugins/firebase_remote_config/ios`)
   - Flutter (from `Flutter`)
   - flutter_barcode_scanner (from `.symlinks/plugins/flutter_barcode_scanner/ios`)
@@ -83,21 +82,21 @@ SPEC REPOS:
   trunk:
     - Firebase
     - FirebaseABTesting
-    - FirebaseAnalyticsInterop
     - FirebaseCore
     - FirebaseCoreDiagnostics
-    - FirebaseCoreDiagnosticsInterop
-    - FirebaseInstanceID
+    - FirebaseInstallations
     - FirebaseRemoteConfig
     - FMDB
     - GoogleDataTransport
-    - GoogleDataTransportCCTSupport
     - GoogleUtilities
     - nanopb
-    - Protobuf
+    - PromisesObjC
+    - SquareBuyerVerificationSDK
     - SquareInAppPaymentsSDK
 
 EXTERNAL SOURCES:
+  firebase_core:
+    :path: ".symlinks/plugins/firebase_core/ios"
   firebase_remote_config:
     :path: ".symlinks/plugins/firebase_remote_config/ios"
   Flutter:
@@ -114,29 +113,28 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/square_in_app_payments/ios"
 
 SPEC CHECKSUMS:
-  Firebase: da031bc7012374e3bed17a6731b89327b29863b9
-  firebase_remote_config: aca16c8db963bba3c789d89cd0f69fc64d888118
-  FirebaseABTesting: 0d10f3cdc3fa00f3f175b5b56c1003c8e888299f
-  FirebaseAnalyticsInterop: d48b6ab67bcf016a05e55b71fc39c61c0cb6b7f3
-  FirebaseCore: bcd6c112429249d7921e907d661e8955a3549e26
-  FirebaseCoreDiagnostics: af29e43048607588c050889d19204f4d7b758c9f
-  FirebaseCoreDiagnosticsInterop: e9b1b023157e3a2fc6418b5cb601e79b9af7b3a0
-  FirebaseInstanceID: ebd2ea79ee38db0cb5f5167b17a0d387e1cc7b6e
-  FirebaseRemoteConfig: 6ad68503c04701b8d9d709240711bc0bf6edaf94
+  Firebase: 26223c695fe322633274198cb19dca8cb7e54416
+  firebase_core: 91b27774a52f41f8b58484a75edf71197ac01c59
+  firebase_remote_config: 1c56b7b8caa840aa2e9432e66bf606d10f492fc9
+  FirebaseABTesting: 8d7f24fdf94cd10f06a84c879262a1159e22db28
+  FirebaseCore: 4d3c72622ce0e2106aaa07bb4b2935ba2c370972
+  FirebaseCoreDiagnostics: ee1184d51da3293335b83355aad20f537acc24cf
+  FirebaseInstallations: 6e4e77396559bc2ae0504823837ed737b1c7e47f
+  FirebaseRemoteConfig: 826fad8bec5ce1912ef97a124d6ec0ce4dcf6ec1
   Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
   flutter_barcode_scanner: c7d23c65b4866f5eaaa1cce1da8d2d1669b57800
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
-  GoogleDataTransport: 166f9b9f82cbf60a204e8fe2daa9db3e3ec1fb15
-  GoogleDataTransportCCTSupport: f6ab1962e9dc05ab1fb938b795e5b310209edeec
-  GoogleUtilities: f895fde57977df4e0233edda0dbeac490e3703b6
-  nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
-  package_info: 48b108e75b8802c2d5e126f208ef540561c98aef
-  Protobuf: a4dc852ad69c027ca2166ed287b856697814375b
-  shared_preferences: 430726339841afefe5142b9c1f50cb6bd7793e01
-  sqflite: 4001a31ff81d210346b500c55b17f4d6c7589dd0
-  square_in_app_payments: 5147612bdab7ae2861e4281853ea0b1fc50823bb
-  SquareInAppPaymentsSDK: 4cd8143cfb21f2050cc6252596a1b8c910ad2fb9
+  GoogleDataTransport: 1024b1a4dfbd7a0e92cb20d7e0a6f1fb66b449a4
+  GoogleUtilities: 31c5b01f978a70c6cff2afc6272b3f1921614b43
+  nanopb: 59221d7f958fb711001e6a449489542d92ae113e
+  package_info: 873975fc26034f0b863a300ad47e7f1ac6c7ec62
+  PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
+  shared_preferences: af6bfa751691cdc24be3045c43ec037377ada40d
+  sqflite: 6d358c025f5b867b29ed92fc697fd34924e11904
+  square_in_app_payments: 339aa5d1c828be189639090149e0fb303c2d9812
+  SquareBuyerVerificationSDK: 6a73cc3b073d8e613cb1fe8643600ff9ac4d6373
+  SquareInAppPaymentsSDK: 6c3293e5600c121bbdc5499ffa3b3976e2cf0054
 
-PODFILE CHECKSUM: 1b66dae606f75376c5f2135a8290850eeb09ae83
+PODFILE CHECKSUM: 404329f9e57f2312cf77d2c31c47d9fa68535da8
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.10.1

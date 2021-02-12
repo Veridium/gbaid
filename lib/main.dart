@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
 Future<RemoteConfig> setupRemoteConfig() async {
   final RemoteConfig remoteConfig = await RemoteConfig.instance;
   // Enable developer mode to relax fetch throttling
-  remoteConfig.setConfigSettings(RemoteConfigSettings(debugMode: true));
+  //remoteConfig.setConfigSettings(RemoteConfigSettings(debugMode: true));
   remoteConfig.setDefaults(<String, dynamic>{
     'welcome': 'Welcome!',
     'baseUrl': 'http://localhost:3000',
