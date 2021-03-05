@@ -12,7 +12,7 @@ import './bloc.dart';
 class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
   final RegistrationRepo registrationRepo;
 
-  RegistrationBloc(this.registrationRepo);
+  RegistrationBloc(this.registrationRepo) : super(RegistrationInitial());
 
   @override
   RegistrationState get initialState => RegistrationInitial();
@@ -162,7 +162,7 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
       );
     }
   }
-  
+
   Stream<RegistrationState> _mapSubmitToState(String email) async* {
     try {
       yield RegistrationLoading();

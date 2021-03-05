@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'GBA Id',
       home: BlocProvider(
-        builder: (context) => RegistrationBloc(ApiRegistrationRepo(remoteConfig))..add(LoadRegistration()),
+        create: (context) => RegistrationBloc(ApiRegistrationRepo(remoteConfig))..add(LoadRegistration()),
         child: RegistrationSignupPage(remoteConfig),
       ),
     );

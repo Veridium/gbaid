@@ -11,18 +11,18 @@ PODS:
     - Firebase/RemoteConfig (= 7.3.0)
     - firebase_core
     - Flutter
-  - FirebaseABTesting (7.6.0):
+  - FirebaseABTesting (7.7.0):
     - FirebaseCore (~> 7.0)
   - FirebaseCore (7.3.0):
     - FirebaseCoreDiagnostics (~> 7.0)
     - GoogleUtilities/Environment (~> 7.0)
     - GoogleUtilities/Logger (~> 7.0)
-  - FirebaseCoreDiagnostics (7.6.0):
+  - FirebaseCoreDiagnostics (7.7.0):
     - GoogleDataTransport (~> 8.0)
     - GoogleUtilities/Environment (~> 7.0)
     - GoogleUtilities/Logger (~> 7.0)
     - nanopb (~> 2.30907.0)
-  - FirebaseInstallations (7.6.0):
+  - FirebaseInstallations (7.7.0):
     - FirebaseCore (~> 7.0)
     - GoogleUtilities/Environment (~> 7.0)
     - GoogleUtilities/UserDefaults (~> 7.0)
@@ -116,12 +116,12 @@ SPEC CHECKSUMS:
   Firebase: 26223c695fe322633274198cb19dca8cb7e54416
   firebase_core: 91b27774a52f41f8b58484a75edf71197ac01c59
   firebase_remote_config: 1c56b7b8caa840aa2e9432e66bf606d10f492fc9
-  FirebaseABTesting: 8d7f24fdf94cd10f06a84c879262a1159e22db28
+  FirebaseABTesting: 96117eb86e2fa429520bbf5a3f02caef615f6576
   FirebaseCore: 4d3c72622ce0e2106aaa07bb4b2935ba2c370972
-  FirebaseCoreDiagnostics: ee1184d51da3293335b83355aad20f537acc24cf
-  FirebaseInstallations: 6e4e77396559bc2ae0504823837ed737b1c7e47f
+  FirebaseCoreDiagnostics: 179bf3831213451c8addd036aca7fcf5492ec154
+  FirebaseInstallations: 42c86e7b02ff75b7f27f85833bf5dcb5f38a9774
   FirebaseRemoteConfig: 826fad8bec5ce1912ef97a124d6ec0ce4dcf6ec1
-  Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
+  Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
   flutter_barcode_scanner: c7d23c65b4866f5eaaa1cce1da8d2d1669b57800
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   GoogleDataTransport: 1024b1a4dfbd7a0e92cb20d7e0a6f1fb66b449a4
@@ -135,6 +135,6 @@ SPEC CHECKSUMS:
   SquareBuyerVerificationSDK: 6a73cc3b073d8e613cb1fe8643600ff9ac4d6373
   SquareInAppPaymentsSDK: 6c3293e5600c121bbdc5499ffa3b3976e2cf0054
 
-PODFILE CHECKSUM: 404329f9e57f2312cf77d2c31c47d9fa68535da8
+PODFILE CHECKSUM: aafe91acc616949ddb318b77800a7f51bffa2a4c
 
 COCOAPODS: 1.10.1
